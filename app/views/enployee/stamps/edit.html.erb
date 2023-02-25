@@ -1,0 +1,68 @@
+<%= render "enployee/shared/links" %>
+  <div class="container">
+    <h2>
+      打刻修正
+    </h2>
+    <div>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>
+                日付
+              </th>
+              <th>
+                出勤
+              </th>
+              <th>
+                退勤
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <%= @stamp.work_finish&.strftime("%m/%d") %>
+              </td>
+              <td>
+                <%= @stamp.work_start&.strftime("%H:%M") %>
+              </td>
+              <td>
+                <%= @stamp.work_finish&.strftime("%H:%M") %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <%= form_with model: @stamp, method: :PATCH do |f| %>
+        <div>
+          <h2>
+            修正時間入力
+          </h2>
+            <div>
+              <h3>
+                出勤
+              </h3>
+              <div>
+                <%= f.number_field :work_start_hour %>:<%= f.number_field :work_start_minute %>
+              </div>
+            </div>
+            <div>
+              <h3>
+                退勤
+              </h3>
+              <div>
+                <%= f.number_field :work_finish_hour %>:<%= f.number_field :work_finish_minute %>
+              </div>
+            </div>
+        </div>
+        <div>
+          <h2>
+            申請理由
+          </h2>
+          <%= f.text_area :fix_request %>
+        </div>
+        <%= f.submit "申請",class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>

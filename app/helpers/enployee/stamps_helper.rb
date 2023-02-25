@@ -1,0 +1,2 @@
+module Enployee::StampsHelper
+end

@@ -1,0 +1,38 @@
+<%= render "enployee/shared/links" %>
+  <div class="container">
+    <div>
+      <h2>
+        残業申請
+      </h2>
+      <%= form_with model: @overtime, url: new_stamp_path do |f| %>
+        <div>
+          <h3>
+            残業時間入力
+          </h3>
+          <div>
+            <h4>
+              残業開始時間
+            </h4>
+            <div>
+              <%= f.number_field :overtime_start %>:<%= f.number_field :overtime_start %>
+            </div>
+          </div>
+          <div>
+            <h4>
+              残業終了時間
+            </h4>
+            <div>
+              <%= f.number_field :overtime_finish %>:<%= f.number_field :overtime_finish %>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3>
+            申請理由
+          </h3>
+          <%= f.text_area :overtime_request %>
+        </div>
+        <%= f.submit "申請",class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>

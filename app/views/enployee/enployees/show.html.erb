@@ -1,0 +1,46 @@
+<%= render "enployee/shared/links" %>
+  <div class="container">
+    <h2>
+      勤務時間一覧
+    </h2>
+    <div class=>
+      <table>
+        <thead>
+            <th>
+              月日
+            </th>
+            <th>
+              出勤
+            </th>
+            <th>
+              退勤
+            </th>
+            <th>
+
+            </th>
+        </thead>
+        <tbody>
+          <% @stamps.each do |stamp| %>
+            <tr>
+              <td>
+                <%= stamp.work_start&.strftime("%m/%d") %>
+              </td>
+              <td>
+                <%= stamp.work_start&.strftime("%H:%M") %>
+              </td>
+              <td>
+                <%= stamp.work_finish&.strftime("%H:%M") %>
+              </td>
+              <td>
+                <%= link_to  edit_stamp_path(stamp.id) do %>
+                  <div class="btn btn-info">
+                    修正
+                  </div>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
