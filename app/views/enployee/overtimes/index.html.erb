@@ -1,2 +1,55 @@
-<h1>Enployee::Overtimes#index</h1>
-<p>Find me in app/views/enployee/overtimes/index.html.erb</p>
+<%= render "enployee/shared/links" %>
+  <div class="container">
+    <div class="col-4 mt-5">
+      <h2 class="bg-light text-center">
+        残業申請一覧
+      </h2>
+    </div>
+    <div class="d-flex justify-content-center align-items-center col-7">
+      <table class="table table-bordered mt-5 mx-5">
+        <thead>
+          <tr>
+            <th class="col-1">
+              月日
+            </th>
+            <th class="col-2">
+              残業開始時間
+            </th>
+            <th class="col-2">
+              残業終了時間
+            </th class="col-2">
+            <th>
+              承認状況
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @overtimes.each do |overtime| %>
+            <tr>
+              <td class="col-1">
+                <%= overtime.overtime_start_month %>/<%= overtime.overtime_start_day %>
+              </td>
+              <td class="col-2">
+                <%= overtime.overtime_start_hour %>:<%= overtime.overtime_start_minute %>
+              </td>
+              <td class="col-2">
+                <%= overtime.overtime_finish_hour %>:<%= overtime.overtime_finish_minute %>
+              </td>
+              <td class="col-2">
+                <% if overtime.admit_status == true %>
+                 <p class="text-success pt-1">
+                   承認済
+                  </p>
+                <% else %>
+                  <p class="text-danger pt-1">
+                    承認未
+                  </p>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>

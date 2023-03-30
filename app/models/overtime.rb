@@ -1,3 +1,3 @@
 class Overtime < ApplicationRecord
-  belongs_to :stamp
+  belongs_to :enployee
 end

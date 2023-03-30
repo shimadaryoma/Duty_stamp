@@ -42,19 +42,24 @@ ActiveRecord::Schema.define(version: 2023_02_23_111503) do
   end
 
   create_table "overtimes", force: :cascade do |t|
-    t.datetime "overtime_start"
-    t.datetime "overtime_finish"
+    t.integer "overtime_start_month"
+    t.integer "overtime_start_day"
+    t.integer "overtime_start_hour"
+    t.integer "overtime_start_minute"
+    t.integer "overtime_finish_month"
+    t.integer "overtime_finish_day"
+    t.integer "overtime_finish_hour"
+    t.integer "overtime_finish_minute"
     t.text "overtime_request"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "enployee_id"
+    t.boolean "admit_status"
   end
 
   create_table "stamps", force: :cascade do |t|
     t.datetime "work_start"
     t.datetime "work_finish"
     t.text "fix_request"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "fix_status", default: true
     t.integer "enployee_id"
   end
 

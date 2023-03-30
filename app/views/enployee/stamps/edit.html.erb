@@ -1,33 +1,35 @@
 <%= render "enployee/shared/links" %>
   <div class="container">
-    <h2>
-      打刻修正
-    </h2>
-    <div>
-      <div>
+    <div class="mt-5">
+      <h2 class="bg-light text-center col-4">
+        打刻修正
+      </h2>
+    </div>
+    <div class="row">
+      <div class="mt-5 mx-4">
         <table>
           <thead>
             <tr>
-              <th>
+              <th class="col-2 text-center">
                 日付
               </th>
-              <th>
+              <th class="col-2 text-center">
                 出勤
               </th>
-              <th>
+              <th class="col-2 text-center">
                 退勤
               </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>
+              <td class="col-2">
                 <%= @stamp.work_finish&.strftime("%m/%d") %>
               </td>
-              <td>
+              <td class="col-2">
                 <%= @stamp.work_start&.strftime("%H:%M") %>
               </td>
-              <td>
+              <td class="col-2">
                 <%= @stamp.work_finish&.strftime("%H:%M") %>
               </td>
             </tr>
@@ -35,34 +37,40 @@
         </table>
       </div>
       <%= form_with model: @stamp, method: :PATCH do |f| %>
-        <div>
-          <h2>
+        <div class="mt-5 mx-5">
+          <h2 class="mx-5 px-5">
             修正時間入力
           </h2>
+          <div class="row mt-4">
             <div>
-              <h3>
+              <h3 class="text-center">
                 出勤
               </h3>
-              <div>
-                <%= f.number_field :work_start_hour %>:<%= f.number_field :work_start_minute %>
+              <div class="mx-5">
+                <%= f.number_field :work_start_hour, style: 'width: 50px;' %>:<%= f.number_field :work_start_minute, style: 'width: 50px;'  %>
               </div>
             </div>
             <div>
-              <h3>
+              <h3 class="text-center">
                 退勤
               </h3>
-              <div>
-                <%= f.number_field :work_finish_hour %>:<%= f.number_field :work_finish_minute %>
+              <div class="mx-5">
+                <%= f.number_field :work_finish_hour, style: 'width: 50px;'  %>:<%= f.number_field :work_finish_minute, style: 'width: 50px;'  %>
               </div>
             </div>
+          </div>
         </div>
-        <div>
-          <h2>
+        <div class="mt-5 mx-5">
+          <h2 class="text-center">
             申請理由
           </h2>
-          <%= f.text_area :fix_request %>
+          <div class="mx-5 px-5">
+            <%= f.text_area :fix_request %>
+          </div>
         </div>
-        <%= f.submit "申請",class: 'btn btn-success' %>
+        <div class="mx-5 px-5 mt-4">
+          <%= f.submit "申請",class: 'btn btn-success', style: 'width: 270px; height: 50px;' %>
+        </div>
       <% end %>
     </div>
   </div>

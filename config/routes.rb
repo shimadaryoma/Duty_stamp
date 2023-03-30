@@ -1,20 +1,22 @@
 Rails.application.routes.draw do
 
-  devise_for :admin,skip: [:registrations, :passwords] , controllers: {
-    sessions: "admin/sessions"
-  }
+
 
   devise_for :enployees,skip: [:passwords],controllers: {
     registrations: "enployee/registrations",
     sessions: 'enployee/sessions'
+  }
+  
+    devise_for :admin,skip: [:registrations, :passwords] , controllers: {
+    sessions: "admin/sessions"
   }
 
   namespace :admin do
     resources :overtimes, onry: [:index]
   end
   namespace :admin do
-    resources :stamps, onry: [:index]
-    get 'stamps/finish'
+    resources :stamps
+    get 'stamps/fix/finish' => 'stamps#finish'
   end
   namespace :admin do
     resources :enployees, onry: [:index, :show]

@@ -4,8 +4,7 @@ class CreateStamps < ActiveRecord::Migration[6.1]
       t.datetime :work_start
       t.datetime :work_finish 
       t.text :fix_request
-
-      t.timestamps
+      t.boolean :fix_status, default: true
     end
   end
 end

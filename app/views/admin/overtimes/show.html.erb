@@ -1,0 +1,43 @@
+<%= render "admin/shared/links" %>
+  <div class="container">
+    <div class="mt-5">
+      <h2 class="bg-light col-3 text-center">
+        残業承認画面
+      </h2>
+    </div>
+    <div class="mt-5 text-center col-8">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="col-2">
+              月日
+            </th>
+            <th class="col-3">
+              開始時間
+            </th>
+            <th class="col-3">
+              終了時間
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= @overtime.overtime_start_month %>/<%= @overtime.overtime_start_day %>
+            </td>
+            <td>
+              <%= @overtime.overtime_start_hour %>:<%= @overtime.overtime_start_minute %>
+            </td>
+            <td>
+              <%= @overtime.overtime_finish_hour %>:<%= @overtime.overtime_finish_minute %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="mt-4">
+        <%= form_with model: @overtime, url: admin_overtime_path(@overtime.id), method: :PATCH do |f| %>
+          <%= f.submit "承認する",class: 'btn btn-success' %>
+        <% end %>        
+      </div>
+    </div>
+  </div>

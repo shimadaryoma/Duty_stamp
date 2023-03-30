@@ -1,2 +1,48 @@
-<h1>Admin::Enployees#show</h1>
-<p>Find me in app/views/admin/enployees/show.html.erb</p>
+<%= render "admin/shared/links" %>
+  <div class="container">
+    <div class="mt-5 col-4">
+      <h2 class="text-center bg-light">
+        勤務時間一覧
+      </h2>
+    </div>
+    <div class="mt-5 mx-5">
+      <h3>
+        <%= @enployee.last_name %> <%= @enployee.first_name %>
+      </h3>
+      <div class="col-8">
+        <table class="table table-bordered mt-5 text-center">
+          <thead>
+            <tr>
+              <th class="col-2">
+                月日
+              </th>
+              <th class="col-3">
+                出勤時間
+              </th>
+              <th class="col-3">
+                退勤時間
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @stamps.each do |stamp| %>
+              <% if stamp.enployee_id == @enployee.id %>
+                <tr>
+                  <td>
+                    <%= stamp.work_start.strftime("%m/%d") %>
+                  </td>
+                  <td>
+                    <%= stamp.work_start.strftime("%H:%M") %>
+                  </td>
+                  <td>
+                    <%= stamp.work_finish.strftime("%H:%M") %>
+                  </td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>        
+      </div>
+    
+    </div>
+  </div>

@@ -1,12 +1,13 @@
 <%= render "enployee/shared/links" %>
   <div class="container">
-    <h2>
+    <h2 class="bg-light text-center col-3 mt-5 mx-5">
       勤務時間一覧
     </h2>
-    <div class=>
-      <table>
-        <thead>
-            <th>
+    <div class="d-flex justify-content-center align-items-center">
+      <div>
+      <table class="table table-bordered">
+        <thead class="thead-light col-8">
+            <th class="">
               月日
             </th>
             <th>
@@ -32,7 +33,7 @@
                 <%= stamp.work_finish&.strftime("%H:%M") %>
               </td>
               <td>
-                <%= link_to  edit_stamp_path(stamp.id) do %>
+                <%= link_to edit_stamp_path(stamp.id) do %>
                   <div class="btn btn-info">
                     修正
                   </div>
@@ -41,6 +42,8 @@
             </tr>
           <% end %>
         </tbody>
-      </table>
+      </table>        
+      </div>
+
     </div>
   </div>

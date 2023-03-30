@@ -1,2 +1,54 @@
-<h1>Admin::Stamps#index</h1>
-<p>Find me in app/views/admin/stamps/index.html.erb</p>
+<%= render "admin/shared/links" %>
+  <div class="container">
+    <div class="mt-5">
+      <h2 class="bg-light text-center col-3">
+        申請中一覧
+      </h2>
+    </div>
+    <div class="mt-5 text-center">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>
+              社員名
+            </th>
+            <th>
+              勤務日
+            </th>
+            <th>
+              修正後出勤時間
+            </th>
+            <th>
+              修正後退勤時間
+            </th>
+            <th>
+
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @stamps.each do |stamp| %>
+            <% if stamp.fix_status == false %>
+              <tr>
+                <td>
+                  <%= stamp.enployee.last_name %> <%= stamp.enployee.first_name %>
+                </td>
+                <td>
+                  <%= stamp.work_start.strftime("%m/%d") %>
+                </td>
+                <td>
+                  <%= stamp.work_start.strftime("%H:%M") %>
+                </td>
+                <td>
+                  <%= stamp.work_finish.strftime("%H:%M") %>
+                </td>
+                <td>
+                  <%= link_to "承認", admin_stamp_path(stamp.id), class: 'btn btn-info' %>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>

@@ -1,25 +1,47 @@
-<%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
-<% end %>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="https://090ddf88141c4033a1a0954dcce7f49e.vfs.cloud9.ap-northeast-1.amazonaws.com/stamps/new">
+        <%= image_tag 'no_image.jpg', size: '100x50' %>
+      </a>
+      <button class="navbar-toggler" type="button" date-toggle="collapse" data-target="#navbarNavDropdown" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="navbar-toggle-icon"></span>
+      </button>
+      <div class="collaspe navbar-collaspe" id="navbarNavDropdown"></div>
+      <ul class="navbar-nav ml-auto">
+        <li>
+          <div class="nav-link text-light">
+            <% if admin_signed_in? %>
+              <%= link_to "残業申請申請中一覧", admin_homes_top_path %>
+            <% end %>
+          </div>
+        </li>
+        <li>
+          <div class="nav-link text-light">
+            <% if admin_signed_in? %>
+              <%= link_to "打刻修正申請中一覧", admin_stamps_path %>
+            <% end %>
+          </div>
+        </li>
+        <li>
+          <div class="nav-link text-light">
+            <% if admin_signed_in? %>
+              <%= link_to "社員一覧", admin_enployees_path %>
+            <% end %>
+          </div>
+        </li>
+        <li>
+          <div class="nav-link text-light">
+            <% if admin_signed_in? %>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+            <% else %>  
+              <%= link_to "ログイン", new_admin_session_path %>
+            <% end %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
 
-<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
-<% end %>
 
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
-<% end %>
-
-<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
-<% end %>
-
-<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
-<% end %>
-
-<%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post %><br />
-  <% end %>
-<% end %>

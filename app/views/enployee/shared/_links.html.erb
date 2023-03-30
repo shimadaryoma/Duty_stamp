@@ -41,6 +41,15 @@
             <% end %>
           </div>
         </li>
+        <li>
+          <div class="nav-link text-light">
+            <% if enployee_signed_in? %>
+              <%= link_to "残業申請一覧", overtimes_path %>
+            <% else %>
+
+            <% end %>
+          </div>
+        </li>
       </ul>
     </div>
   </nav>
